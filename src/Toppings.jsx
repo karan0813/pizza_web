@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import {
-    setamount, selectamount
+    setamount, selectamount, settopings
 } from "./features/PIZA/amountSlice";
 import { Addcart } from "./features/counter/counterSlice"
 import { useSelector, useDispatch } from 'react-redux';
+import { setcart } from './features/PIZA/cartslice';
 
 const Toppings = ({ rupe, setList }) => {
     const [topping, settoping] = useState(null)
     const [pushitems, setpushitems] = useState([])
     const dispatch = useDispatch()
-    const [topingname, settopingname] = usestate()
+    const [topingname, settopingname] = useState("")
+
+
+    console.log(topingname);
+
 
 
 
@@ -55,6 +60,7 @@ const Toppings = ({ rupe, setList }) => {
     const totaldata = data + rupe;
 
 
+
     return (
         <div className=" flex justify-center items-center flex-col lg:w-1/4 p-5 mx-auto bg-pink-100  shadow-md  rounded-md ">
             <h1 className="m-3 text-left w-full text-xl font-bold ">Toppings</h1>
@@ -66,7 +72,7 @@ const Toppings = ({ rupe, setList }) => {
                         < input className="ml-1" id='50' name={val.name}
                             value={val.price}
                             onChange={(e) => (settoping(pushitems.push(Number(e.target.value))))}
-                            onClick={e => ()}
+                            onClick={() => (dispatch(settopings(val.name)))}
                             type="checkbox" />
                     </div>
                 </div>
@@ -78,4 +84,4 @@ const Toppings = ({ rupe, setList }) => {
     )
 }
 
-export default Toppings
+export default Toppings;

@@ -2,7 +2,7 @@ import {  createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: [],
-  // totalamount: 0,
+  topname :[],
   status: 'idle',
 };
 export const amountSlice = createSlice({
@@ -12,9 +12,9 @@ export const amountSlice = createSlice({
     setamount: (state , action) => {
      state.value.push(action.payload) ;
     },
-    // settotalamount: (state ,action) => {
-    //   state.totalamount = action.payload;
-    // },
+    settopings: (state ,action) => {
+      state.topname.push(action.payload);
+    },
     // incrementByAmount: (state, action) => {
     //   state.value += action.payload;
     // },
@@ -22,8 +22,8 @@ export const amountSlice = createSlice({
   
 });
 
-export const { setamount  } = amountSlice.actions;
+export const { setamount , settopings } = amountSlice.actions;
 export const selectamount = (state) => state.amount.value;
-// export const selecttotalamount = (state) => state.amount.totalamount;
+export const selecttopings = (state) => state.amount.topname;
 
 export default amountSlice.reducer;

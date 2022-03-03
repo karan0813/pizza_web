@@ -7,7 +7,7 @@ const Navbar = () => {
     const [cartopen, setcartopen] = useState(false)
     const cart = useSelector(selectCount)
     return (
-        <div className="w-screen bg-[#FFD684] h-16 flex justify-between px-20 items-center">
+        <div className="lg:w-screen md:w-screen w-full bg-[#FFD684] h-16 flex justify-between px-20 items-center ">
             <div>
                 <img className="object-contain h-20  w-20" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXvpwLcAByhTaxHdiPEEFk6UeD7C5D7xrNzA&usqp=CAU" alt="" />
             </div>

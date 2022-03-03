@@ -4,14 +4,17 @@ import ListSize from './ListSize';
 import Navbar from './Navbar';
 import { setcart  } from "./features/PIZA/cartslice"
 import { useDispatch} from 'react-redux';
+import { list } from 'postcss';
 
 
 function App() {
   const [List, setList] = useState(false)
+  const [click , setclick]=useState(false)
   const [pricesmall, setpricesmall] = useState("")
   const[pricemedum , setpricemedum]=useState("")
   const [pricelarg, setpricelarg] = useState("")
   const dispatch = useDispatch()
+  
 
   
 
@@ -26,7 +29,8 @@ function App() {
           meduim: 379,
           large:579
         }
-    ]
+      ],
+     
   },
     {
     id:2,
@@ -55,7 +59,7 @@ function App() {
      {
     id:4,
     url: 'https://www.alfrescochicken.com/wp-content/uploads/2019/07/Jenny-With-The-Good-Eats-BBQ-Chicken-Pizza.jpg',
-       caption: 'Smoked Chiken Sausage',
+       caption: 'Smoked Chiken ',
     price: [
         {
           small: 179,
@@ -92,9 +96,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className=" grid grid-cols-3  m-5 bg-purple-200 rounded-sm shadow-2xl w-fit mx-auto ">
-        {pizaData.map(({url,caption,id,price}, index) => (
-          <div className="m-10 shadow-xl  ">
+      <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  m-5  bg-purple-200 rounded-sm shadow-2xl w-fit mx-auto ">
+        {pizaData.map(({url,caption,id,price  }, index) => (
+          <div key={id} className="m-10 shadow-xl  ">
             <div className="bg-green-700 rounded-t-lg ">
              <div className="h-44 w-full  bg-gray-700">
                  <img className="object-cover h-44 w-full rounded-t-lg" src={url} alt=''/>
@@ -108,7 +112,8 @@ function App() {
                   
                 </p>
                 <h1 className="font-semibold">₹ {price[0].small}</h1>
-                <button className="px-5 py-1 bg-red-400 rounded-md" onClick={() => (
+                <button className="px-5 py-1 bg-red-400 rounded-md"  onClick={() => (
+                  setclick(true),
                   setList(true),
                   setpricesmall(price[0].small),
                   setpricemedum(price[0].meduim),
