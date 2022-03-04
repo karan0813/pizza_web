@@ -6,14 +6,12 @@ import { Addcart } from "./features/counter/counterSlice"
 import { useSelector, useDispatch } from 'react-redux';
 import { setcart } from './features/PIZA/cartslice';
 
-const Toppings = ({ rupe, setList }) => {
+const Toppings = ({ rupe, setList, fulldata }) => {
     const [topping, settoping] = useState(null)
     const [pushitems, setpushitems] = useState([])
     const dispatch = useDispatch()
-    const [topingname, settopingname] = useState("")
 
 
-    console.log(topingname);
 
 
 
@@ -62,13 +60,13 @@ const Toppings = ({ rupe, setList }) => {
 
 
     return (
-        <div className=" flex justify-center items-center flex-col lg:w-1/4 p-5 mx-auto bg-pink-100  shadow-md  rounded-md ">
+        <div className=" flex justify-center items-center flex-col lg:w-1/4 p-5 mx-auto background  shadow-md  rounded-md ">
             <h1 className="m-3 text-left w-full text-xl font-bold ">Toppings</h1>
             {array.map((val, index) => (
                 <div key={index} className="flex items-center justify-between w-full">
-                    <h1>{val.name}</h1>
+                    <h1 className="font-semibold text-gray-800">{val.name}</h1>
                     <div className="flex items-center ">
-                        <h2>₹ {val.price}</h2>
+                        <h2 className="font-semibold text-gray-800">₹ {val.price}</h2>
                         < input className="ml-1" id='50' name={val.name}
                             value={val.price}
                             onChange={(e) => (settoping(pushitems.push(Number(e.target.value))))}
@@ -78,8 +76,8 @@ const Toppings = ({ rupe, setList }) => {
                 </div>
 
             ))}
-            <button className="px-5 py-2 bg-red-400 w-full mt-5" onClick={() => (dispatch(setamount(totaldata)), setList(false), dispatch(Addcart()))} >Done</button>
-            <div className=" capitalize text-white font-bold px-5 py-2 bg-red-800 w-full mt-5"  > totale: {totaldata}</div>
+            <button className="px-5 py-2 bg-red-400 hover:bg-red-500 w-full mt-5" onClick={() => (dispatch(setamount(totaldata)), dispatch(setcart(fulldata)), setList(false), dispatch(Addcart()))} >Done</button>
+            <div className=" capitalize text-white font-bold px-5 py-2 bg-red-600 w-full mt-5"  > totale: {totaldata}</div>
         </div>
     )
 }
